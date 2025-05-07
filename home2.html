@@ -1,0 +1,116 @@
+height
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            width: 200px;
+        }
+        .card img {
+            height: 180px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BookStore</a>
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <span id="username" style="color: white;">User123</span>
+                <span id="cartCount" class="badge bg-success ms-2">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEARCH & FILTER FORM -->
+    <div class="container mt-4">
+        <form action="/Home/Index" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+            <div class="col-12">
+                <select class="form-select" id="genreId" name="genreId">
+                    <option selected>Genre</option>
+                    <option value="1">Fiction</option>
+                    <option value="2">Science</option>
+                    <option value="3">Biography</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <input type="text" class="form-control" id="sterm" name="sterm" placeholder="Search by title">
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a href="/Home/Index" class="btn btn-dark">Reset</a>
+            </div>
+        </form>
+
+        <!-- BOOK CARDS SECTION -->
+        <div class="d-flex flex-wrap justify-content-start gap-3 mt-4">
+            <!-- Repeat this card block for more books -->
+            <div class="card">
+                <img src="/images/samplebook.jpg" class="card-img-top" alt="Book">
+                <div class="card-body">
+                    <h5 class="card-title">Book Title 1</h5>
+                    <p class="card-text">
+                        <b>Genre: </b>Fiction<br />
+                        <b>Author: </b>Author A<br />
+                        <b>Price: </b>₹250
+                    </p>
+                    <button type="button" onclick="add(1)" class="btn btn-primary w-100">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/images/NoImage.png" class="card-img-top" alt="Book">
+                <div class="card-body">
+                    <h5 class="card-title">Book Title 2</h5>
+                    <p class="card-text">
+                        <b>Genre: </b>Science<br />
+                        <b>Author: </b>Author B<br />
+                        <b>Price: </b>₹300
+                    </p>
+                    <span class="d-block text-center text-danger border rounded p-1">Out of stock</span>
+                </div>
+            </div>
+
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        async function add(bookId) {
+            var usernameEl = document.getElementById("username");
+            if (!usernameEl) {
+                window.location.href = "/Identity/Account/Login";
+                return;
+            }
+
+            try {
+                console.log("Adding book ID:", bookId);
+                let countEl = document.getElementById("cartCount");
+                let current = parseInt(countEl.textContent);
+                countEl.textContent = current + 1;
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+</body>
+</html>
