@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed - Cash on Delivery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .container p {
+      color: #555;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .icon {
+      font-size: 50px;
+      color: #ffa500;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">&#128179;</div>
+    <h1>Order Confirmed!</h1>
+    <p>You selected <strong>Cash on Delivery</strong>.</p>
+    <p>Your order has been successfully placed and will be delivered to your address.</p>
+    <p>Please keep the payment ready upon delivery.</p>
+  </div>
+</body>
+</html>
