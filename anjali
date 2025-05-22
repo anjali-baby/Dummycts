@@ -1,0 +1,291 @@
+Description
+
+
+
+
+
+
+Note :
+EFCore.csproj file is given for your reference in the code template. Do not make any changes here.
+
+Scenario:
+
+A social media company needs to develop a user management system to enhance their platform's administrative capabilities.
+Help them to create a C# application to store details in the SQLSERVER database and use the Entity Framework Core to connect to the database, which provides the following functionalities.
+
+ 
+
+Functionalities:
+
+Add new users to the database
+Retrieve a list of all registered users.
+Retrieve specific user details based on their user ID.
+Remove specific user details based on their user ID.
+ 
+
+Requirements: 
+
+1. In the class User, implement the below given public properties.
+
+        Data Type
+
+          Property Name
+
+   int 
+
+   UserId
+
+   string 
+
+   Username
+
+   string 
+
+   Email
+
+   DateTime
+
+   RegistrationDate
+
+Add the data annotation attribute to make the UserId property the primary key in the User class.
+Add the data annotation for UserId [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
+
+
+
+2. In the class  UserContext, implement the below given property, method and also inherit the class DbContext.
+
+              Data Type
+
+             Property Name
+
+  DbSet<User >
+
+  Users
+
+
+
+             Method
+
+               Description
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+This method is used to configure the database connection for the DbContext.
+
+
+
+appsettings.json: 
+
+{
+
+  "ConnectionStrings": {
+
+    "DefaultConnection": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=StudentDB;Integrated Security=True;"
+
+  }
+
+}
+
+This file is already provided for you. Use the connection string in your context class OnConfiguring method to configure the database.
+
+
+
+The below-given reference code is the part of the UserContext.cs
+
+
+
+ 
+
+
+
+3. In the class User Repository, implement the below given public methods.
+
+         Method 
+
+      Description
+
+public void AddUser(User newUser)
+
+This method is used to add the given user details to the database. 
+
+public List<User> GetAllUsers()
+
+This method is used to return a list of all the users along with their details.
+
+public User GetUserById(int userId)
+
+This method is used to return the specific user details from the database based on the user id is passed.
+
+public void RemoveUserById(int userId)
+
+This method is used to remove the specific user details from the database based on the user id is passed.
+
+
+4. In the class Program - Main() method implementation already provided in the code template.
+ 
+
+
+
+The below records are already available in the database table. 
+
+    UserId
+
+  Username
+
+    Email
+
+    RegistrationDate
+
+  101
+
+  John Doe
+
+  johndoe@email.com
+
+  11-15-2023
+
+  102
+
+  Jane Smith
+
+ janesmith@email.com
+
+  11-20-2023
+
+  103
+
+  William      Clark
+
+ clark@email.com
+
+  11-18-2023
+
+      
+
+Sample Input/output:
+
+1. Add User
+
+2. Get All Users
+
+3. Get User By Id
+
+4. Remove User
+
+5. Exit
+
+Enter your choice
+
+1
+
+Enter user id
+
+104
+
+Enter user name
+
+Alice
+
+Enter user email
+
+alice@example.com
+
+Enter registration date
+
+10-22-2023
+
+
+
+Details Added Successfully         .
+
+ 
+
+1. Add User
+
+2. Get All Users
+
+3. Get User By Id
+
+4. Remove User
+
+5. Exit
+
+Enter your choice
+
+2
+
+
+
+101      John Doe          johndoe@email.com      11-15-2023
+
+102      Jane Smith       janesmith@email.com   11-20-2023
+
+103      William Clark    clark@email.com            11-18-2023
+
+104      Alice                   alice@example.com      10-22-2023
+
+
+
+1. Add User
+
+2. Get All Users
+
+3. Get User By Id
+
+4. Remove User
+
+5. Exit
+
+Enter your choice
+
+3
+
+Enter user id
+
+104
+
+
+
+104      Alice    alice@example.com      10-22-2023
+
+
+
+1. Add User
+
+2. Get All Users
+
+3. Get User By Id
+
+4. Remove User
+
+5. Exit
+
+Enter your choice
+
+4
+
+Enter user id
+
+104
+
+
+
+Details Removed Successfully       
+
+
+
+
+1. Add User
+
+2. Get All Users
+
+3. Get User By Id
+
+4. Remove User
+
+5. Exit
+
+Enter your choice
+
+5 
